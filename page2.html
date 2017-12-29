@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Home - PPK T </title>
+  <!-- Mobile Spesific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Boostrap files -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body onload="proses()">
+  <nav class="navbar navbar-default navbar-absolute-top "role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="Index.html" id="set-nav">Filkom Apps</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_head">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        </div>
+      <div id="navbar_head" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="Index.html" class="glyphicon glyphicon-home"  id="tabhome"></a></li>
+            <li><a href="berita.html" >Berita</a></li>
+            <li><a href="about.html" >About</a></li>
+        </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span></a>
+              <ul class="dropdown-menu" id="edit-navbar" role="menu">
+                <li><form class="navbar-form navbar-left" role="search">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Keyword. .">
+                  </div>
+                      <button type="button" class="btn btn-default">Search</button>
+                    </form>
+                </li>
+              </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-7 text-left temp-art">
+      <hr>
+        <h1 id="title"></h1>
+        <hr>
+        <ul class="breadcrumb">
+          <li><a href="index.html"class="glyphicon glyphicon-home warnabread"> Home</a></li>
+          <li><a href="berita.html"class="warnabread">Berita</a></li>
+          <li class="active" id="breadcrumbitem"></li>
+        </ul>
+      <div id="content" width=auto%;>
+
+      </div>
+
+  </div>
+  <div class="col-md-4 text-left temp-art">
+    <hr>
+      <h1><center>Berita</h1>
+      <hr>
+      <section id="main-content">
+        <div id="berita">
+
+        </div>
+      </section>
+
+</div>
+  </div>
+</div>
+
+<script>
+var xmlhttp = buatXmlHttpRequestObject();
+     function buatXmlHttpRequestObject(){
+       var xmlhttp;
+       try {
+         //untuk IE 7 atau modern browser
+         xmlhttp = new XMLHttpRequest();
+       } catch (e) {
+         alert('Browser Anda Tidak Support Ajax : '+e.toString());
+       }
+       if (!xmlhttp) {
+         alert('Error Create XMLHttpReq');
+       }else {
+         return xmlhttp;
+       }
+     }
+     function proses(){
+       //di lanjutkan jika xmlhttp tidak void
+       if (xmlhttp) {
+         //mencoba membaca file dari server
+         try {
+           xmlhttp.open("GET","js/berita.json",true);
+           xmlhttp.onreadystatechange = handleRequestStateChange;
+           xmlhttp.send(null)
+         } catch (e) {
+           alert('Tidak Dapat Konek : '+e.toString());
+         }
+       }
+     }
+     function handleRequestStateChange(){
+       if (xmlhttp.readyState == 4) {
+         //lanjutkan jika http status adalah ok atau 200
+         if (xmlhttp.status == 200) {
+           try {
+             handleServerResponse();
+           } catch (e) {
+             alert('Error Membaca Response : '+e.toString());
+           }
+         }else {
+           alert('Terjadi Masalah Saat Mendapatkan Data : '+xmlhttp.statusText);
+         }
+       }
+     }
+     //menangani respon yang di terima dari server
+     function handleServerResponse(){
+       //membaca pesan dari server
+       responjson = JSON.parse(xmlhttp.responseText);
+       hasil = responjson.response.berita;
+         var title = "";
+         var content ="";
+         var breadcrumbitem ="";
+         var img = "";
+            breadcrumbitem += JSON.stringify(hasil.news[2].content_title).replace(/['"]+/g, '');
+            title += JSON.stringify(hasil.news[2].content_title).replace(/['"]+/g, '');
+            content += JSON.stringify(hasil.news[2].post_content).replace(/['"]+/g, '');
+                // $('#berita').html('<div class="table-responsive"><table><tr><th width="1050"></th><th></th></tr><tr><td><blockquote><p>'+JSON.stringify(hasil.news[i].content_title).replace(/['"]+/g, '')+'</p><footer>'+JSON.stringify(hasil.news[i].fakultas_id).replace(/['"]+/g, '')+'</footer></blockquote></td><td><footer><a>Read More</a></footer></td></tr></table></div>');
+          document.getElementById('title').innerHTML = title;
+          document.getElementById('breadcrumbitem').innerHTML = breadcrumbitem;
+          document.getElementById('content').innerHTML= content.replace(/(?:\\[rn])+/g, "");
+          var html = "";
+
+          for (var i = 0; i < hasil.news.length; i++) {
+                 // document.getElementById('berita').innerHTML = html.replace(/['"]+/g, '');
+                 // html +='<div class="table-responsive"><table><tr><th width="1050"></th><th></th></tr><tr><td><img src="http://'+JSON.stringify(hasil.news[i].icon).replace(/['"]+/g, '')+'" style="float:left; height:100px; margin:10px; width:190px"></img><blockquote><p>'+JSON.stringify(hasil.news[i].content_title).replace(/['"]+/g, '')+'</p><footer>'+JSON.stringify(hasil.news[i].content_modified).replace(/['"]+/g, '')+', '+JSON.stringify(hasil.news[i].fakultas_id).replace(/['"]+/g, '')+'</footer></blockquote></td><td><footer><a>Read More</a></footer></td></tr><hr></table></div>';
+                 html +='<div class="list-group setsize"><a href="page'+i+'.html" class="list-group-item" id="warna-1">'+JSON.stringify(hasil.news[i].content_title).replace(/['"]+/g, '')+'</a></div>';
+                 // $('#berita').html('<div class="table-responsive"><table><tr><th width="1050"></th><th></th></tr><tr><td><blockquote><p>'+JSON.stringify(hasil.news[i].content_title).replace(/['"]+/g, '')+'</p><footer>'+JSON.stringify(hasil.news[i].fakultas_id).replace(/['"]+/g, '')+'</footer></blockquote></td><td><footer><a>Read More</a></footer></td></tr></table></div>');
+           }
+           document.getElementById('berita').innerHTML = html;
+     }
+
+</script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<footer class="container-fluid">
+  <p id="set-copy">Copyright &copy; Kelompok 2</p>
+</footer>
+</body>
+</html>
