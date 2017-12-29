@@ -6,10 +6,15 @@ footer{
 }
 @media only screen and (max-width: 320px) {
 
-     body { font-size: 1em; }
+   body {
+      font-size: 2em;
+   }
 
+}
+img {
+      width: 100%;
+      height: auto;
   }
-  
 .set-cap{
 text-align: left;
 font-size: 14px;
@@ -23,9 +28,9 @@ color: black;
   margin-left: 10px;
   }
 .setsize{
-  margin-left: 60px;
+  /* margin-left: 60px; */
   width: auto;;
-  height: 170px;
+  height: auto;
   text-align: center;
 }
 .set-pos{
