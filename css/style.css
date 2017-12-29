@@ -1,0 +1,129 @@
+footer{
+  background-color: lightgrey;
+  text-align: left;
+  font-size: 12px;
+  padding: 15px;
+}
+@media only screen and (max-width: 320px) {
+
+     body { font-size: 1em; }
+
+  }
+  
+.set-cap{
+text-align: left;
+font-size: 14px;
+font-family: Trebuchet MS;
+color: black;
+}
+.glyphicon.glyphicon-home {
+    font-size: 15px;
+}
+.temp-art{
+  margin-left: 10px;
+  }
+.setsize{
+  margin-left: 60px;
+  width: auto;;
+  height: 170px;
+  text-align: center;
+}
+.set-pos{
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.set-p1{
+  margin-left: 20px;
+  margin-right: 25px;
+  padding: 10px;
+  background-color: lightblue;
+  border: solid blue 1px;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 18px;
+}
+.set-p2{
+  margin-left: 20px;
+  margin-right: 25px;
+  padding: 10px;
+  background-color: lightgreen;
+  border: solid green 1px;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 18px;
+}
+.set-p3{
+  margin-left: 20px;
+  margin-right: 25px;
+font-family: 'PT Serif', serif;
+  font-size: 18px;
+}
+.set-p-home-s{
+text-indent: 1in;
+font-family: 'PT Serif', serif;
+font-size: 16px;
+}
+.warnabread{
+  color: black;
+}
+.facebook, .instagram{
+  width: 75px;
+  height: 75px;
+}
+.warna-text-facebook{
+  font-size: 20px;
+  color: black;
+}
+.img-kanan{
+  width: 500px;
+  height: 300px;
+}
+.kanan-p{
+  font-size: 25px;
+}
+#warna-well{
+  background-color: lightyellow;
+}
+#warna-1{
+    background-color: lightblue;
+  }
+  #warna-2{
+      background-color: lightgreen;
+    }
+    #warna-3{
+        background-color: lightyellow;
+      }
+#navbar_head{
+  font-family: Trebuchet MS;
+  font-size: 15px;
+  padding: 5px;
+}
+#img-profile{
+  width: 200px;
+  height: 200px;
+}
+#m-set{
+  font-size: 20px;
+  text-align: left;
+  padding: 10px;
+}
+#set-nav{
+  padding: 20px;
+  font-family: Trebuchet MS;
+  font-size: 20px;
+}
+#set-copy{
+  text-align: center;
+  color: black;
+  padding-right: 30px;
+}
+#set-align{
+  text-align: left;;
+}
+#set-jumbotron{
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+}
+#edit-navbar{
+  border-bottom: 3px solid blue;
+}
